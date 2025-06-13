@@ -1,20 +1,26 @@
 
-import {FC, useState} from 'react';
-import {Flex, Grid} from "@radix-ui/themes";
+import {FC, useEffect, useState} from 'react';
+import {Flex, Grid, Text} from "@radix-ui/themes";
 import {AIconButton} from "./a-icon-button.tsx";
 import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import classNames from "classnames";
 import {ACard} from "@yanquer/browser";
+import {BiuManager} from "../manager/biu-manager.ts";
 
 
 interface CalendarProps {
     initialDate?: Date;
+    initSelectData?: Date[];
     onDateSelect?: (date: Date) => void;
 }
 
-const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect }) => {
+const Calendar_: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect, initSelectData }) => {
     const [currentDate, setCurrentDate] = useState<Date>(initialDate);
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date[] | undefined>(initSelectData);
+
+    useEffect(() => {
+        setSelectedDate(initSelectData)
+    }, [initSelectData]);
 
     // 获取月份
     const getDaysInMonth = (year: number, month: number): number => {
@@ -30,7 +36,8 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
         // 暂时取消手动选中
         return
 
-        setSelectedDate(date);
+        // // @ts-ignore
+        // setSelectedDate(date);
         onDateSelect?.(date);
     };
 
@@ -58,7 +65,9 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
                     <ChevronLeftIcon onClick={goToPreviousMonth}/>
                 </AIconButton>
                 <h2>
-                    {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+                    <Text size={"1"}>
+                        {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+                    </Text>
                 </h2>
                 <AIconButton className={""}>
                     <ChevronRightIcon onClick={goToNextMonth} />
@@ -75,7 +84,7 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
             >
                 {dayNames.map((day) => (
                     <Flex key={day} justify={"center"} align={"center"}>
-                        {day}
+                        <Text size={"1"}>{day}</Text>
                     </Flex>
                 ))}
             </Grid>
@@ -104,10 +113,9 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
             }
 
             const date = new Date(year, month, day);
+            const dateStr = date.toLocaleDateString()
             const isSelected = selectedDate &&
-                date.getDate() === selectedDate.getDate() &&
-                date.getMonth() === selectedDate.getMonth() &&
-                date.getFullYear() === selectedDate.getFullYear();
+                !!(selectedDate.find(v => v.toLocaleDateString() === dateStr))
 
             const isToday =
                 date.getDate() === new Date().getDate() &&
@@ -123,12 +131,12 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
                     align={"center"}
                     className={classNames(
                         "rounded-md",
-                        isSelected ? "bg-blue-600" : "",
-                        isToday ? "bg-blue-500" : "",
+                        isToday ? "border-1 border-blue-500" : "",
+                        isSelected ? "bg-amber-500" : "",
                     )}
                     onClick={() => handleDateClick(date)}
                 >
-                    {day}
+                    <Text size={"1"}>{day}</Text>
                 </Flex>
             );
             day++;
@@ -155,6 +163,38 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
     );
 };
 
-export default Calendar;
+export const Calendar = (props: CalendarProps) => {
+    const [allDates, setAllDates] = useState<string[]>([]);
+
+    useEffect(() => {
+        const biu = BiuManager.shared()
+        setAllDates(biu?.allRecord?.map(a => a.recordTime!) ?? [])
+
+        return biu?.biuDataChangeEvent(v => setAllDates(v.map(a => a.recordTime!)))
+    }, []);
+
+    const filterThisMonth = () => {
+        // 获取当前日期
+        const now = new Date();
+
+        // 获取本月的开始和结束日期
+        const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        const currentMonthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        currentMonthEnd.setHours(23, 59, 59, 999);
+
+        return allDates.map(dt => {
+            const curDt = new Date(dt);
+            const timestamp = curDt.getTime()
+            if (
+                timestamp >= currentMonthStart.getTime() && timestamp <= currentMonthEnd.getTime()
+            ){
+                return curDt
+            }
+            return false
+        }).filter(v => typeof v !== "boolean")
+    }
+
+    return <Calendar_ {...props} initSelectData={filterThisMonth()} />
+}
 
 

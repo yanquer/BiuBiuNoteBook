@@ -1,10 +1,13 @@
-import {Box, Flex, Grid, ScrollArea, Text, TextArea} from "@radix-ui/themes";
+import {Box, Flex, ScrollArea, Text, TextArea} from "@radix-ui/themes";
 import {ACard} from "@yanquer/browser";
-import {MiniCard} from "../components/mini-card.tsx";
-import {ArrowDownIcon, ArrowUpIcon, ChevronRightIcon} from "@radix-ui/react-icons";
+import {ArrowDownIcon, ArrowUpIcon} from "@radix-ui/react-icons";
 import {AIconButton} from "../components/a-icon-button.tsx";
-import Calendar from "../components/calender.tsx";
+import {Calendar} from "../components/calender.tsx";
 import classNames from "classnames";
+import {BiuManager} from "../manager/biu-manager.ts";
+import {StartStopButton} from "../components/start-stop-button.tsx";
+import {StatisticsData} from "../components/statistics-data.tsx";
+import {CacheManager} from "../manager/cache-manager.ts";
 
 
 export const Home = () => {
@@ -35,16 +38,15 @@ export const Home = () => {
                         <Text color={"blue"} size={"3"}>记录新的手艺活</Text>
                         <Text color={"bronze"} size={"4"}>准备开始</Text>
 
-                        <AIconButton
-                            width={"72px"}
-                            height={"36px"}
-                        >
-                            <ChevronRightIcon color={"white"} />
-                            <Text color={"gray"} size={"4"}>开始</Text>
-                        </AIconButton>
+                        <StartStopButton />
 
                         <Box maxWidth="300px">
-                            <TextArea size="3" placeholder="备注(可选)" />
+                            <TextArea size="3" placeholder="备注(可选)"
+                                      onChange={e => {
+                                          const v = e.target.value;
+                                          BiuManager.shared()?.setNote(v)
+                                      }}
+                            />
                         </Box>
 
                         <Flex gap={"2"}>
@@ -52,6 +54,8 @@ export const Home = () => {
                                 width={"80px"}
                                 height={"36px"}
                                 className={"rounded-xl border-1 border-blue-500"}
+                                // @ts-ignore
+                                onClick={e => CacheManager.shared()?.exportOut()}
                             >
                                 <ArrowUpIcon color={"white"} />
                                 <Text color={"gray"} size={"2"}>导出数据</Text>
@@ -61,6 +65,8 @@ export const Home = () => {
                                 width={"80px"}
                                 height={"36px"}
                                 className={"rounded-xl border-1 border-blue-500"}
+                                // @ts-ignore
+                                onClick={e => CacheManager.shared()?.exportIn()}
                             >
                                 <ArrowDownIcon color={"white"} />
                                 <Text color={"gray"} size={"2"}>导入数据</Text>
@@ -79,12 +85,7 @@ export const Home = () => {
                 >
                     <Text color={"blue"} size={"3"}>统计数据</Text>
 
-                    <Grid columns={"2"} gap={"2"}>
-                        <MiniCard name={"总次数"} description={"1"} />
-                        <MiniCard name={"平均持续时间"} description={"1分钟"} />
-                        <MiniCard name={"本周次数"} description={"1"} />
-                        <MiniCard name={"本月次数"} description={"1"} />
-                    </Grid>
+                    <StatisticsData />
 
                 </Flex>
 

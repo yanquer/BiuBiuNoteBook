@@ -17,6 +17,9 @@ dependencies:
   '@tauri-apps/api':
     specifier: ^2
     version: 2.5.0
+  '@tauri-apps/plugin-clipboard-manager':
+    specifier: ~2
+    version: 2.2.2
   '@tauri-apps/plugin-fs':
     specifier: ~2
     version: 2.3.0
@@ -27,14 +30,14 @@ dependencies:
     specifier: ~2
     version: 2.2.1
   '@yanquer/browser':
-    specifier: ^0.8.1
-    version: 0.8.1(@types/react-dom@18.3.7)(@types/react@18.3.23)
+    specifier: ^0.8.2
+    version: 0.8.2(@types/react-dom@18.3.7)(@types/react@18.3.23)
   '@yanquer/common':
-    specifier: ^0.8.1
-    version: 0.8.1
+    specifier: ^0.8.2
+    version: 0.8.2
   '@yanquer/node-bin':
-    specifier: ^0.8.1
-    version: 0.8.1
+    specifier: ^0.8.2
+    version: 0.8.2
   classnames:
     specifier: ^2.5.1
     version: 2.5.1
@@ -3687,6 +3690,12 @@ packages:
       '@tauri-apps/cli-win32-x64-msvc': 2.5.0
     dev: true
 
+  /@tauri-apps/plugin-clipboard-manager@2.2.2:
+    resolution: {integrity: sha512-bZvDLMqfcNmsw7Ag8I49jlaCjdpDvvlJHnpp6P+Gg/3xtpSERdwlDxm7cKGbs2mj46dsw4AuG3RoAgcpwgioUA==}
+    dependencies:
+      '@tauri-apps/api': 2.5.0
+    dev: false
+
   /@tauri-apps/plugin-fs@2.3.0:
     resolution: {integrity: sha512-G9gEyYVUaaxhdRJBgQTTLmzAe0vtHYxYyN1oTQzU3zwvb8T+tVLcAqCdFMWHq0qGeGbmynI5whvYpcXo5LvZ1w==}
     dependencies:
@@ -3770,8 +3779,8 @@ packages:
       - supports-color
     dev: true
 
-  /@yanquer/browser@0.8.1(@types/react-dom@18.3.7)(@types/react@18.3.23):
-    resolution: {integrity: sha512-3jMo4hXjyWZdVTwCiDFb6vBMdobHZU6rnyIwJC2RyEltL4j4CIJbMpP0eUeVfd1NgJYMHk1ixbMBmR++ZnONEw==, tarball: https://npm.pkg.github.com/download/@yanquer/browser/0.8.1/4b008744217e5a60505463dd430d68ac2dfe269b}
+  /@yanquer/browser@0.8.2(@types/react-dom@18.3.7)(@types/react@18.3.23):
+    resolution: {integrity: sha512-+GUSlqGjJOUko5On1NkOhSb6XsF/+oplAa+DuNrdf9nz8JlO8RgGwm+exKjwC6jzep14S69vXxBYOYgslNPxhA==, tarball: https://npm.pkg.github.com/download/@yanquer/browser/0.8.2/3f987e0b366a1d97dc0aa13ca489b65da8f3592e}
     dependencies:
       '@radix-ui/react-icons': 1.3.2(react@19.1.0)
       '@radix-ui/react-toolbar': 1.1.10(@types/react-dom@18.3.7)(@types/react@18.3.23)(react-dom@19.1.0)(react@19.1.0)
@@ -3790,8 +3799,8 @@ packages:
       - '@types/react-dom'
     dev: false
 
-  /@yanquer/common@0.8.1:
-    resolution: {integrity: sha512-fLuDs4kMvCrzc+oEaL+SD0d5aDg4y5BMvB3kMIQy/FNOu+q6/HvwKWrBO1IiG9MDAHR/GsocRfI2Fy7sdeDz1Q==, tarball: https://npm.pkg.github.com/download/@yanquer/common/0.8.1/b06dc45cd76a3e99922592a79be5f98ad7a8da5f}
+  /@yanquer/common@0.8.2:
+    resolution: {integrity: sha512-MydHv/BwArRgofy2WJEkU4cMg/nbKtjy/Y7T9/z3G/5IHT1jdi34irWJDMPPh3Pu7FdFNGo4WFBFqrKAJEMkEw==, tarball: https://npm.pkg.github.com/download/@yanquer/common/0.8.2/0ea0954f9d3d32af2dbba30d6ae110e4429ada3b}
     dependencies:
       axios: 1.9.0
       chalk: 4.1.2
@@ -3802,8 +3811,8 @@ packages:
       - debug
     dev: false
 
-  /@yanquer/node-bin@0.8.1:
-    resolution: {integrity: sha512-+eCAJifmy8vQcz8U28RIp6q4te0yk4/KzugPR6N56/YZdIB45Vx3YMze03qUUMBQHnO9tPsKfEenqT6djQjAPw==, tarball: https://npm.pkg.github.com/download/@yanquer/node-bin/0.8.1/f7d7de4a78a016b6e1d35c63975e9e87ed7b71f1}
+  /@yanquer/node-bin@0.8.2:
+    resolution: {integrity: sha512-nqfvnTUhEkBFQ2w3Qlgupk4MPlq5EcaCr+XzvoevqcQ/eF5oM8zQoJGLO40c6ZvclGVCSHFFWJYZuiJ4j2Igvw==, tarball: https://npm.pkg.github.com/download/@yanquer/node-bin/0.8.2/c2ea141f992b6f867c4745ab65592aeb62796ed3}
     hasBin: true
     dev: false
 
