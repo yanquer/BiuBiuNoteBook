@@ -14,7 +14,8 @@
       {
         "title": "biu-biu-note-book",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "url": "/"
       }
     ],
     "security": {

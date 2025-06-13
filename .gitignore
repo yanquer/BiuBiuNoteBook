@@ -26,3 +26,6 @@ dist-ssr
 .DS_Store
 .idea
 
+
+.husky/_
+

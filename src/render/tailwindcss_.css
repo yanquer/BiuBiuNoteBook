@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@source "../../node_modules/@yanquer/browser";
+
+:root,
+.radix-themes{
+    /*--color-background: #2f2f2fdd !important;*/
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: #f6f6f6;
+        background-color: #2f2f2f55;
+    }
+
+    a:hover {
+        color: #24c8db;
+    }
+
+    input,
+    button {
+        color: #ffffff;
+        background-color: #0f0f0f98;
+    }
+    button:active {
+        background-color: #0f0f0f69;
+    }
+}
+
+
+/* 颜色 */
+@theme{
+    --color-dark-bg: #2f2f2f;
+
+    /* mac 左上角的红绿灯颜色 */
+    --color-mac-tool-red: #fe5f59;
+    --color-mac-tool-orange: #febb2c;
+    --color-mac-tool-green: #29c73f;
+    --color-mac-tool-gray: #3f3f3f;
+
+    /* 主页背景色 */
+    --color-main-black: #17171888;
+    --color-play-page-black: #1e1e1f88;
+
+
+    --color-gray-400-95: rgba(142, 151, 165, 0.95);
+
+    /* dialog 遮罩 */
+    --color-gray-500-95: oklch(0.446 0.03 256.802 / 0.95);
+    --color-gray-500-25: oklch(0.446 0.03 256.802 / 0.25);
+    --color-gray-500-20: oklch(0.446 0.03 256.802 / 0.20);
+    --color-gray-500-15: oklch(0.446 0.03 256.802 / 0.15);
+    --color-gray-500-10: oklch(0.446 0.03 256.802 / 0.10);
+    --color-gray-500-5: oklch(0.446 0.03 256.802 / 0.05);
+
+    --color-gray-700-90: rgba(28, 37, 50, 0.9);
+    --color-gray-700-80: rgba(28, 37, 50, 0.8);
+    --color-gray-700-70: rgba(28, 37, 50, 0.7);
+
+    --color-gray-800-95: rgba(28, 37, 50, 0.95);
+    --color-gray-800-90: rgba(28, 37, 50, 0.9);
+    --color-gray-800-80: rgba(28, 37, 50, 0.8);
+    --color-gray-800-70: rgba(28, 37, 50, 0.7);
+    --color-gray-800-50: rgba(28, 37, 50, 0.5);
+    --color-gray-800-45: rgba(28, 37, 50, 0.45);
+    --color-gray-800-35: rgba(28, 37, 50, 0.35);
+    --color-gray-800-25: rgba(28, 37, 50, 0.25);
+    --color-gray-800-15: rgba(28, 37, 50, 0.15);
+    --color-gray-800-5: rgba(28, 37, 50, 0.05);
+
+    --color-gray-900-95: rgba(18, 23, 36, 0.95);
+
+    --color-t-t-95: rgba(58, 64, 69, 0.95);
+
+}
+
+
+/* 移动的时候 支持平滑效果 */
+.rt-ScrollAreaViewport table.rt-TableRootTable{
+    /*transition: unset !important;*/
+    /*will-change: transform;*/
+    /*transition: transform 1s linear !important;*/
+    /*scroll-behavior: auto;*/
+    /*overflow-anchor: none; !* 禁用滚动锚定 *!*/
+    /*overscroll-behavior: contain; !* 阻止边界回弹 *!*/
+}

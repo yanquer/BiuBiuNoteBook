@@ -2,8 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
+import {BiuBiuApp} from "./render/app.tsx";
 
-function App() {
+// @ts-ignore
+function App1() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
 
@@ -46,6 +48,11 @@ function App() {
       <p>{greetMsg}</p>
     </main>
   );
+}
+
+function App(){
+
+    return <BiuBiuApp/>
 }
 
 export default App;
