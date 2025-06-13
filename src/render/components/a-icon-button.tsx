@@ -21,7 +21,7 @@ export const AIconButton = (props: IAIconButtonProps) => {
         className={className}
     >
         <IconButton
-            className={"h-full"}
+            className={"h-full w-full"}
         >
             <Flex justify={"center"} align={"center"} height={"100%"} width={"100%"}>
                 {children}

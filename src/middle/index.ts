@@ -5,5 +5,6 @@ export const bindMiddle = () => {
     bindToDefaultContainer(IFileService, FileService)
 }
 
+bindMiddle()
 
 

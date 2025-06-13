@@ -4,6 +4,7 @@ import {Flex, Grid} from "@radix-ui/themes";
 import {AIconButton} from "./a-icon-button.tsx";
 import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import classNames from "classnames";
+import {ACard} from "@yanquer/browser";
 
 
 interface CalendarProps {
@@ -140,15 +141,17 @@ const Calendar: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect })
     };
 
     return (
-        <Flex
-            direction={"column"}
-            gap={"2"}
-            className="cursor-pointer"
-        >
-            {renderHeader()}
-            {renderDays()}
-            {renderCells()}
-        </Flex>
+        <ACard>
+            <Flex
+                direction={"column"}
+                gap={"2"}
+                className="cursor-pointer"
+            >
+                {renderHeader()}
+                {renderDays()}
+                {renderCells()}
+            </Flex>
+        </ACard>
     );
 };
 

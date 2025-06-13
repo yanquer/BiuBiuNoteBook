@@ -4,9 +4,13 @@ import {MiniCard} from "../components/mini-card.tsx";
 import {ArrowDownIcon, ArrowUpIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import {AIconButton} from "../components/a-icon-button.tsx";
 import Calendar from "../components/calender.tsx";
+import classNames from "classnames";
+
 
 export const Home = () => {
-    return <Box width="100%" height={"100%"}>
+    return <Box width="100%" height={"100%"}
+                className={"pt-0 md:pt-10"}
+    >
         <ScrollArea>
             <Flex
                 width={"100%"}
@@ -20,16 +24,20 @@ export const Home = () => {
                     <Flex
                         justify={"center"}
                         align={"center"}
-                        gap={"2"}
-                        direction={"column"} width={"400px"} height={"400px"}
-                        className={" rounded-xl"}
+                        gap={"4"}
+                        direction={"column"}
+                        className={classNames(
+                            " rounded-xl",
+                            "w-[300px] h-[300px]",
+                            "md:w-[400px] md:h-[400px]",
+                        )}
                     >
                         <Text color={"blue"} size={"3"}>记录新的手艺活</Text>
                         <Text color={"bronze"} size={"4"}>准备开始</Text>
 
                         <AIconButton
                             width={"72px"}
-                            height={"48px"}
+                            height={"36px"}
                         >
                             <ChevronRightIcon color={"white"} />
                             <Text color={"gray"} size={"4"}>开始</Text>
@@ -63,8 +71,11 @@ export const Home = () => {
 
                 <Flex direction={"column"}
                       justify={"center"}
-                      width={"400px"}
-                      // height={"400px"}
+                      className={classNames(
+                          " rounded-xl",
+                          "w-[300px]",
+                          "md:w-[400px]",
+                      )}
                 >
                     <Text color={"blue"} size={"3"}>统计数据</Text>
 
@@ -78,18 +89,17 @@ export const Home = () => {
                 </Flex>
 
                 <ACard>
-                    <Flex width={"400px"} height={"400px"}
-                          // justify={"center"}
-                          // align={"center"}
+                    <Flex className={classNames(
+                        "w-[300px] h-[300px]",
+                        "md:w-[400px] md:h-[400px]",
+                    )}
+                          justify={"center"}
+                          align={"center"}
                           direction={"column"}
                     >
                         <Text color={"gray"} size={"3"}>发射日历</Text>
                         <Box flexGrow={"1"}>
-                            <Flex
-                                height={"100%"}
-                                justify={"center"} align={"center"}>
-                                <Calendar />
-                            </Flex>
+                            <Calendar />
                         </Box>
                     </Flex>
                 </ACard>

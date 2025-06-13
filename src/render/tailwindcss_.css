@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @source "../../node_modules/@yanquer/browser";
 
+body, #root{
+    background: transparent;
+}
+
+
 :root,
 .radix-themes{
     /*--color-background: #2f2f2fdd !important;*/
@@ -9,7 +14,8 @@
 @media (prefers-color-scheme: dark) {
     :root {
         color: #f6f6f6;
-        background-color: #2f2f2f55;
+        /*background-color: #2f2f2f55;*/
+        background-color: transparent;
     }
 
     a:hover {
@@ -82,4 +88,9 @@
     /*scroll-behavior: auto;*/
     /*overflow-anchor: none; !* 禁用滚动锚定 *!*/
     /*overscroll-behavior: contain; !* 阻止边界回弹 *!*/
+}
+
+body{
+    padding: 0;
+    margin: 0;
 }
