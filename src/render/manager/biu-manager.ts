@@ -63,6 +63,7 @@ export class BiuManager {
             this.timerCount = 0
             this.note = undefined
 
+            this.timeCountChangeEmitter.fire(this.timerCount)
             this.save(thisTime, note)
         }
     }
