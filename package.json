@@ -1,7 +1,7 @@
 {
   "name": "biu-biu-note-book",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,9 +23,9 @@
     "@tauri-apps/plugin-fs": "~2",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-process": "~2",
-    "@yanquer/browser": "^0.8.2",
-    "@yanquer/common": "^0.8.2",
-    "@yanquer/node-bin": "^0.8.2",
+    "@yanquer/browser": "^0.8.3",
+    "@yanquer/common": "^0.8.3",
+    "@yanquer/node-bin": "^0.8.3",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -1,7 +1,7 @@
-import {Box, Flex} from "@radix-ui/themes"
+import {Flex} from "@radix-ui/themes"
 import {RouterLink, RouterPath} from "../router.tsx";
 import {ArrowRightIcon} from "@radix-ui/react-icons";
-import {IconButton} from "@yanquer/browser";
+import {AIconButton} from "../components/a-icon-button.tsx";
 
 export const Welcome = () => {
 
@@ -11,19 +11,18 @@ export const Welcome = () => {
         width={"100%"}
         height={"100%"}
     >
-        <Box
-            width={"48px"}
-            height={"48px"}
-            className={"animate-bounce rounded-full bg-blue-500"}
+        <AIconButton
+            width={"56px"}
+            height={"56px"}
         >
-            <IconButton
-                className={"h-full"}
-            >
-                <Flex justify={"center"} align={"center"} height={"100%"}>
-                    {/*<a href={RouterPath.HOME}> <ArrowRightIcon/> </a>*/}
-                    <RouterLink name={<ArrowRightIcon color={"white"}/>} path={RouterPath.HOME} />
-                </Flex>
-            </IconButton>
-        </Box>
+            {/*<a href={RouterPath.HOME}> <ArrowRightIcon/> </a>*/}
+            <RouterLink
+                name={<ArrowRightIcon
+                    width={"24px"}
+                    height={"24px"}
+                    color={"rgb(32, 200, 219)"}
+                />}
+                path={RouterPath.HOME} />
+        </AIconButton>
     </Flex>
 }

@@ -49,7 +49,7 @@ export const Home = () => {
                             />
                         </Box>
 
-                        <Flex gap={"2"}>
+                        <Flex gap={"5"}>
                             <AIconButton
                                 width={"80px"}
                                 height={"36px"}

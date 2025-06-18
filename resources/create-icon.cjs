@@ -35,7 +35,7 @@ const macIconItemMap = {
 }
 
 /// 源图片, 考虑是否使用参数传递进来
-const originImg = "resources/img/biu biu 日记.png"
+const originImg = "resources/img/biu biu 日记 圆角 240.png"
 const outDir = "src-tauri/icons"
 
 /// 仅 macOS 可用

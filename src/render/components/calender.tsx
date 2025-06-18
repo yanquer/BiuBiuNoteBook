@@ -59,17 +59,16 @@ const Calendar_: FC<CalendarProps> = ({ initialDate = new Date(), onDateSelect, 
             <Flex
                 align={"center"}
                 justify={"center"}
-                gap={"2"}
+                height={"24px"}
+                gap={"3"}
             >
-                <AIconButton className={""}>
+                <AIconButton className={""} width={"16px"} height={"16px"}>
                     <ChevronLeftIcon onClick={goToPreviousMonth}/>
                 </AIconButton>
-                <h2>
-                    <Text size={"1"}>
-                        {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
-                    </Text>
-                </h2>
-                <AIconButton className={""}>
+                <Text size={"1"}>
+                    <strong>{monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</strong>
+                </Text>
+                <AIconButton className={""} width={"16px"} height={"16px"}>
                     <ChevronRightIcon onClick={goToNextMonth} />
                 </AIconButton>
             </Flex>
